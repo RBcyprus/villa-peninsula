@@ -22,8 +22,9 @@
     --line:#E1DBC8;
     --radius:4px;
   }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box; min-width:0;}
   html{scroll-behavior:smooth;}
+  html, body{overflow-x:hidden; max-width:100%;}
   body{
     margin:0;
     background:var(--bg);
@@ -299,6 +300,9 @@
     border-radius:var(--radius);
     padding:32px;
   }
+  @media (max-width:480px){
+    .contact-card{padding:22px 18px;}
+  }
   .contact-card h3{color:#fff; font-size:17px; margin-bottom:6px;}
   .contact-card p{color:#C9D8D6; font-size:14.5px;}
   .wa-btn{
@@ -315,6 +319,12 @@
     font-family:"IBM Plex Mono", monospace;
     font-size:14px;
     justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .email-box span{word-break:break-all; min-width:0;}
+  .copy-btn{flex:0 0 auto;}
+  @media (max-width:400px){
+    .email-box{font-size:12.5px;}
   }
   .copy-btn{
     background:transparent; border:1px solid rgba(255,255,255,.4); color:#fff;
@@ -542,10 +552,9 @@
       <div class="contact-card">
         <h3>Kurznachricht senden</h3>
         <p>Ich melde mich per E-Mail bei Ihnen zurück.</p>
-        <form class="contact-form" action="https://formsubmit.co/rb.nordzypern@gmail.com" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/mjgnevjg" method="POST">
           <input type="hidden" name="_subject" value="Neue Anfrage – Villa Peninsula II">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+          <input type="text" name="_gotcha" class="honey" tabindex="-1" autocomplete="off">
           <label for="name">Name</label>
           <input id="name" type="text" name="Name" required>
           <label for="email">E-Mail</label>
