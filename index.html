@@ -5,6 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Villa Peninsula II — Ruhige Bungalow-Villa in Dipkarpaz, Nordzypern</title>
 <meta name="description" content="Freistehende, barrierearme Bungalow-Villa im Naturschutzgebiet der Karpaz-Halbinsel. Provisionsfrei, direkt vom Eigentümer, Festpreis 198.600 GBP.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18344483152"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode: bis zur Einwilligung standardmäßig alles ablehnen (EWR-Anforderung)
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+  gtag('js', new Date());
+  gtag('config', 'AW-18344483152');
+
+  // Wiederverwendbare Funktion zum Melden einer Conversion an Google Ads
+  function gtag_report_conversion(label, callback) {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18344483152/' + label,
+      'event_callback': callback || function(){}
+    });
+  }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -356,6 +379,24 @@
   }
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
 
+  /* ---- cookie consent banner ---- */
+  .cookie-banner{
+    position:fixed; left:0; right:0; bottom:0; z-index:90;
+    background:var(--teal-deep);
+    color:#fff;
+    box-shadow:0 -4px 20px rgba(0,0,0,.2);
+    transform:translateY(120%);
+    transition:transform .35s ease;
+  }
+  .cookie-banner.open{transform:translateY(0);}
+  .cookie-inner{
+    max-width:1080px; margin:0 auto;
+    padding:18px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .cookie-inner p{margin:0; font-size:13.5px; color:#D9E7E6; max-width:60ch;}
+  .cookie-actions{display:flex; gap:10px; flex-wrap:wrap;}
+
   /* ---- lightbox ---- */
   .lightbox{
     position:fixed; inset:0; z-index:100;
@@ -379,7 +420,7 @@
 <header class="site">
   <div class="nav">
     <div class="wordmark">Villa <span>Peninsula&nbsp;II</span></div>
-    <a class="btn btn-primary btn-sm" href="https://wa.me/905338841328?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Villa%20in%20Dipkarpaz%20%28Peninsula%20II%29%20und%20h%C3%A4tte%20gerne%20mehr%20Informationen." target="_blank" rel="noopener">WhatsApp schreiben</a>
+    <a class="btn btn-primary btn-sm" href="https://wa.me/905338841328?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Villa%20in%20Dipkarpaz%20%28Peninsula%20II%29%20und%20h%C3%A4tte%20gerne%20mehr%20Informationen." target="_blank" rel="noopener" onclick="gtag_report_conversion('TX6KCKz9kdUcENCyqqtE')">WhatsApp schreiben</a>
   </div>
 </header>
 
@@ -389,7 +430,7 @@
     <h1>Wo die Stille zu Hause ist.</h1>
     <p class="lead">Eine ruhige, barrierearme Bungalow-Villa im Naturschutzgebiet der Karpaz-Halbinsel — für alle, die dem Alltag ein neues, langsameres Tempo geben wollen.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://wa.me/905338841328?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Villa%20in%20Dipkarpaz%20%28Peninsula%20II%29%20und%20h%C3%A4tte%20gerne%20mehr%20Informationen." target="_blank" rel="noopener">Auf WhatsApp fragen</a>
+      <a class="btn btn-primary" href="https://wa.me/905338841328?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Villa%20in%20Dipkarpaz%20%28Peninsula%20II%29%20und%20h%C3%A4tte%20gerne%20mehr%20Informationen." target="_blank" rel="noopener" onclick="gtag_report_conversion('TX6KCKz9kdUcENCyqqtE')">Auf WhatsApp fragen</a>
       <a class="btn btn-hero-ghost" href="#kontakt">Zum Kontaktformular</a>
     </div>
   </div>
@@ -538,7 +579,7 @@
         <div class="contact-card">
           <h3>Direkt &amp; unkompliziert</h3>
           <p>Für eine schnelle, unverbindliche Frage zwischendurch.</p>
-          <a class="btn wa-btn" href="https://wa.me/905338841328?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Villa%20in%20Dipkarpaz%20%28Peninsula%20II%29%20und%20h%C3%A4tte%20gerne%20mehr%20Informationen." target="_blank" rel="noopener">Auf WhatsApp schreiben</a>
+          <a class="btn wa-btn" href="https://wa.me/905338841328?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Villa%20in%20Dipkarpaz%20%28Peninsula%20II%29%20und%20h%C3%A4tte%20gerne%20mehr%20Informationen." target="_blank" rel="noopener" onclick="gtag_report_conversion('TX6KCKz9kdUcENCyqqtE')">Auf WhatsApp schreiben</a>
         </div>
         <div class="contact-card" style="margin-top:20px;">
           <h3>Per E-Mail</h3>
@@ -552,7 +593,7 @@
       <div class="contact-card">
         <h3>Kurznachricht senden</h3>
         <p>Ich melde mich per E-Mail bei Ihnen zurück.</p>
-        <form class="contact-form" action="https://formspree.io/f/mjgnevjg" method="POST">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mjgnevjg" method="POST">
           <input type="hidden" name="_subject" value="Neue Anfrage – Villa Peninsula II">
           <input type="text" name="_gotcha" class="honey" tabindex="-1" autocomplete="off">
           <label for="name">Name</label>
@@ -568,6 +609,16 @@
     </div>
   </div>
 </section>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-inner">
+    <p>Diese Seite verwendet Google Ads, um zu messen, wie Besucher die Seite nutzen. Damit können Sie Cookies zustimmen oder die Nutzung auf das Nötigste beschränken.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-ghost btn-sm" onclick="setConsent(false)" style="border-color:rgba(255,255,255,.4); color:#fff;">Nur notwendige</button>
+      <button class="btn btn-primary btn-sm" onclick="setConsent(true)">Akzeptieren</button>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -602,6 +653,46 @@
   function closeLightbox(){ lb.classList.remove('open'); lbImg.src=''; }
   lb.addEventListener('click', function(e){ if(e.target === lb) closeLightbox(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+
+  // Formular-Absendung als Conversion melden, bevor zu Formspree weitergeleitet wird
+  (function(){
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+    var alreadyTracked = false;
+    form.addEventListener('submit', function(e){
+      if (alreadyTracked) return; // zweiter, echter Submit darf durch
+      e.preventDefault();
+      alreadyTracked = true;
+      var proceeded = false;
+      function proceed(){
+        if (proceeded) return;
+        proceeded = true;
+        form.submit();
+      }
+      gtag_report_conversion('9ozeCKn9kdUcENCyqqtE', proceed);
+      setTimeout(proceed, 1000); // Sicherheitsnetz, falls das Event nicht rechtzeitig zurückkommt
+    });
+  })();
+
+  // Cookie-Consent (Google Consent Mode)
+  function setConsent(granted){
+    localStorage.setItem('cookie_consent', granted ? 'granted' : 'denied');
+    gtag('consent', 'update', {
+      'ad_storage': granted ? 'granted' : 'denied',
+      'ad_user_data': granted ? 'granted' : 'denied',
+      'ad_personalization': granted ? 'granted' : 'denied',
+      'analytics_storage': granted ? 'granted' : 'denied'
+    });
+    document.getElementById('cookieBanner').classList.remove('open');
+  }
+  (function(){
+    var stored = localStorage.getItem('cookie_consent');
+    if (stored === 'granted') {
+      setConsent(true);
+    } else if (!stored) {
+      document.getElementById('cookieBanner').classList.add('open');
+    }
+  })();
 </script>
 
 </body>
