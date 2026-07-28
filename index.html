@@ -413,6 +413,66 @@
   }
 
   h2.section-title{font-size:clamp(26px,3.4vw,36px);}
+
+  /* ---- process list (Ablauf) ---- */
+  .process-list{list-style:none; margin:44px 0 0; padding:0; max-width:760px; margin-left:auto; margin-right:auto;}
+  .process-list li{
+    display:flex; gap:22px; align-items:flex-start;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .process-list li:first-child{border-top:none;}
+  .process-num{
+    flex:none;
+    width:36px; height:36px;
+    border-radius:50%;
+    background:var(--teal);
+    color:#fff;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:15px;
+    display:flex; align-items:center; justify-content:center;
+    margin-top:2px;
+  }
+  .process-list h3{font-family:"Public Sans", sans-serif; font-weight:700; font-size:16.5px; color:var(--ink); margin:0 0 6px;}
+  .process-list p{color:var(--ink-soft); font-size:15px; margin:0;}
+  .process-note{
+    max-width:760px; margin:32px auto 0;
+    font-size:13px; color:var(--ink-soft);
+    text-align:center; font-style:italic;
+  }
+
+  /* ---- FAQ accordion ---- */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{
+    border-top:1px solid var(--line);
+    padding:6px 0;
+  }
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding:16px 32px 16px 0;
+    font-weight:600;
+    font-size:16px;
+    color:var(--ink);
+    position:relative;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+";
+    position:absolute; right:0; top:14px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:20px;
+    color:var(--teal);
+    transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{content:"–";}
+  .faq-item p{
+    color:var(--ink-soft);
+    font-size:15px;
+    padding:0 0 18px;
+    margin:0;
+  }
 </style>
 </head>
 <body>
@@ -565,6 +625,89 @@
       <p>Meine Familie und ich sind vor vier Jahren nach Nordzypern ausgewandert und leben sehr gerne hier. Die Villa wurde ursprünglich als langfristige Geldanlage für unseren älteren Sohn erworben. Im Zuge seines Studiums hat sich jedoch die Möglichkeit ergeben, den Master an einer renommierten europäischen Universität zu absolvieren — und diese Ausbildung finanzieren wir nun mit dem Kapital aus dieser Immobilie.</p>
       <p>Deshalb verkaufen wir die Villa zum gleichen Preis, zu dem wir sie selbst in der Planungsphase erworben haben — ohne Aufschlag und ohne Käuferprovision. Nach dem Kauf unterstützen meine Frau und ich Sie gerne persönlich und kostenlos, etwa bei Möblierung, Behördengängen oder der Aufenthaltsgenehmigung.</p>
       <p class="signoff">— Gerade in einem fremden Land ist Unterstützung in der eigenen Sprache Gold wert. Wir wissen das aus eigener Erfahrung.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ablauf" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="highlights-head">
+      <span class="eyebrow">Transparenz</span>
+      <h2 class="section-title">So läuft der Kauf in der Praxis ab</h2>
+      <p>Ein Überblick über den üblichen Ablauf bei einem privaten Immobilienkauf in Nordzypern — damit Sie von Anfang an wissen, was Sie erwartet.</p>
+    </div>
+    <ol class="process-list">
+      <li>
+        <span class="process-num">1</span>
+        <div>
+          <h3>Erstkontakt &amp; Besichtigung</h3>
+          <p>Sie schreiben uns über WhatsApp, Formular oder E-Mail. Eine Besichtigung ist sowohl persönlich vor Ort als auch per Video möglich, bevor Sie sich festlegen.</p>
+        </div>
+      </li>
+      <li>
+        <span class="process-num">2</span>
+        <div>
+          <h3>Unabhängiger Anwalt vor Ort</h3>
+          <p>Wir empfehlen ausdrücklich, einen eigenen, von uns unabhängigen Anwalt in Nordzypern zu beauftragen, der den Title Deed prüft und Sie durch den gesamten Kaufprozess begleitet. Wir nennen Ihnen auf Wunsch gerne Kontakte, die andere Käufer in der Anlage bereits genutzt haben.</p>
+        </div>
+      </li>
+      <li>
+        <span class="process-num">3</span>
+        <div>
+          <h3>Kaufvertrag &amp; Anzahlung</h3>
+          <p>Der Kaufvertrag wird zwischen Ihnen und uns direkt geschlossen — ohne Makler dazwischen. Üblich ist eine Anzahlung, die von Ihrem Anwalt treuhänderisch abgesichert werden kann.</p>
+        </div>
+      </li>
+      <li>
+        <span class="process-num">4</span>
+        <div>
+          <h3>Übertragung des Title Deed</h3>
+          <p>Nach vollständiger Zahlung wird das Eigentum offiziell auf Sie übertragen. Der türkische Title Deed (vor 1974) liegt bereits vor und wird im Rahmen dieses Schritts rechtssicher umgeschrieben.</p>
+        </div>
+      </li>
+      <li>
+        <span class="process-num">5</span>
+        <div>
+          <h3>Übergabe &amp; persönliche Unterstützung</h3>
+          <p>Sie erhalten die Schlüssel — und uns als Ansprechpartner für die ersten Wochen vor Ort: Möblierung, Behördengänge, Aufenthaltsgenehmigung.</p>
+        </div>
+      </li>
+    </ol>
+    <p class="process-note">Diese Übersicht ersetzt keine individuelle Rechtsberatung. Wir empfehlen jedem Käufer, den Kauf durch einen eigenen, unabhängigen Anwalt in Nordzypern begleiten zu lassen.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="highlights-head">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="section-title">Was Käufer uns am häufigsten fragen</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Ist der Kauf einer Immobilie in Nordzypern rechtlich sicher?</summary>
+        <p>Nordzypern hat aufgrund seines besonderen völkerrechtlichen Status einen eigenen Rechtsrahmen für Immobilieneigentum. Käufe mit einem sogenannten Title Deed vor 1974 — wie bei dieser Villa — gelten dabei als die rechtlich unkomplizierteste der drei üblichen Grundbuch-Kategorien im Land, da sie auf einen türkischen Eigentumstitel vor der Teilung der Insel zurückgehen. Wir empfehlen dennoch jedem Käufer, einen eigenen, von uns unabhängigen Anwalt vor Ort mit der Prüfung zu beauftragen, bevor eine Anzahlung erfolgt.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Was genau bedeutet „Title Deed vor 1974"?</summary>
+        <p>Es handelt sich um einen türkischen Grundbucheintrag, der bereits vor der Teilung Zyperns 1974 bestand. Diese Kategorie gilt unter den in Nordzypern gebräuchlichen Eigentumsformen als die am wenigsten strittige, weil sie nicht auf einer späteren Umverteilung von Grundstücken beruht. Der Title Deed für diese Villa liegt bereits vor und kann von Ihrem Anwalt jederzeit vorab eingesehen werden.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kann ich die Villa später problemlos wieder verkaufen?</summary>
+        <p>Immobilien mit Title Deed vor 1974 lassen sich in Nordzypern grundsätzlich wie jede andere Eigentumsimmobilie weiterverkaufen. Wie bei jedem Immobilienkauf empfehlen wir, auch diesen Punkt mit Ihrem eigenen Anwalt zu besprechen, insbesondere falls Sie konkrete Pläne für einen späteren Wiederverkauf haben.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Muss ich für den Kauf selbst vor Ort sein?</summary>
+        <p>Nein. Viele internationale Käufer regeln den Kauf über eine Vollmacht für ihren Anwalt in Nordzypern und müssen nicht für jeden Schritt persönlich anwesend sein. Für die Besichtigung empfehlen wir trotzdem einen persönlichen Besuch — alternativ bieten wir eine ausführliche Besichtigung per Video an.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wie sicher ist die Zahlungsabwicklung?</summary>
+        <p>Wir empfehlen, Zahlungen ausschließlich über das treuhänderische Anderkonto Ihres unabhängigen Anwalts abzuwickeln, nicht direkt an uns oder Dritte. Seien Sie grundsätzlich vorsichtig bei Anfragen, die eine Zahlung außerhalb dieses üblichen, abgesicherten Weges vorschlagen.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Warum verkaufen Sie ohne Makler?</summary>
+        <p>Weil wir dadurch keine Käuferprovision berechnen müssen und die Villa zum ursprünglichen Einkaufspreis weitergeben können, ohne selbst einen Gewinn zu erzielen. Mehr dazu finden Sie im Abschnitt „Warum wir verkaufen" weiter oben.</p>
+      </details>
     </div>
   </div>
 </section>
