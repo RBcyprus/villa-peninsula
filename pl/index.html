@@ -616,7 +616,11 @@
         <source src="../images/aussenrundgang.mp4" type="video/mp4">
         Twoja przeglądarka niestety nie obsługuje tego formatu wideo.
       </video>
-      <p>Wideo-spacer (teren zewnętrzny) — nagrania wnętrza wkrótce.</p>
+      <p>Wideo-spacer (teren zewnętrzny)</p>
+    </div>
+    <div class="video-block">
+      <video id="innen-video" controls preload="none" width="1280" height="720"></video>
+      <p>Wideo-spacer (wnętrze)</p>
     </div>
   </div>
 </section>
@@ -859,6 +863,19 @@
   }
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lightboxImg');
+  (function(){
+    var v = document.getElementById('innen-video');
+    if (!v) return;
+    var isMobile = window.matchMedia('(max-width: 600px)').matches;
+    v.poster = isMobile ? '../images/innen-poster-mobile.jpg' : '../images/innen-poster-desktop.jpg';
+    v.width = isMobile ? 540 : 1280;
+    v.height = isMobile ? 960 : 720;
+    var src = document.createElement('source');
+    src.src = isMobile ? '../images/innenrundgang-mobile.mp4' : '../images/innenrundgang-desktop.mp4';
+    src.type = 'video/mp4';
+    v.appendChild(src);
+  })();
+
   document.querySelectorAll('.gallery-grid button, .map-card').forEach(function(b){
     b.addEventListener('click', function(){
       lbImg.src = b.getAttribute('data-full');
