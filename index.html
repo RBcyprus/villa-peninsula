@@ -162,8 +162,25 @@
     max-width:46ch;
     margin-bottom:30px;
   }
+  .hero-facts{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    font-family:"Public Sans", sans-serif; font-weight:700; font-size:16px;
+    color:#fff; margin-bottom:26px; text-shadow:0 1px 6px rgba(0,0,0,.35);
+  }
+  .hero-facts .dot{color:rgba(255,255,255,.5); font-weight:400;}
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
   /* .btn-hero-ghost removed: hero CTAs now share the single .btn-primary style */
+  .scroll-hint{
+    position:absolute; left:50%; bottom:16px; transform:translateX(-50%);
+    z-index:2; color:#fff; opacity:.7; animation:scrollBounce 2.2s infinite;
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    text-decoration:none; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .scroll-hint svg{width:20px; height:20px; display:block;}
+  @keyframes scrollBounce{
+    0%,100%{transform:translateX(-50%) translateY(0);}
+    50%{transform:translateX(-50%) translateY(7px);}
+  }
 
   /* ---- facts strip ---- */
   .facts{
@@ -528,15 +545,22 @@
     <span class="eyebrow">Dipkarpaz, Nordzypern</span>
     <h1>Wo die Stille zu Hause ist.</h1>
     <p class="lead">Eine ruhige, barrierearme Bungalow-Villa im Naturschutzgebiet der Karpaz-Halbinsel — für alle, die dem Alltag ein neues, langsameres Tempo geben wollen.</p>
+    <div class="hero-facts">
+      <span>198.600&nbsp;GBP</span><span class="dot">·</span>
+      <span>115&nbsp;m²</span><span class="dot">·</span>
+      <span>5 Min. zum Strand</span>
+    </div>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="https://wa.me/905338841328?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Villa%20in%20Dipkarpaz%20%28Peninsula%20II%29%20und%20h%C3%A4tte%20gerne%20mehr%20Informationen." target="_blank" rel="noopener" onclick="gtag_report_conversion('TX6KCKz9kdUcENCyqqtE')">Auf WhatsApp fragen</a>
-      <a class="btn btn-primary" href="tel:+905338841328">+90 533 884 1328 anrufen</a>
-      <a class="btn btn-primary" href="#kontakt">Zum Kontaktformular</a>
     </div>
   </div>
+  <a class="scroll-hint" href="#facts" aria-label="Nach unten scrollen">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    Mehr
+  </a>
 </section>
 
-<div class="facts">
+<div class="facts" id="facts">
   <div class="facts-row">
     <div class="fact"><span class="num">198.600&nbsp;GBP</span><span class="lbl">Festpreis, ca. 231.800&nbsp;€</span></div>
     <div class="fact"><span class="num">115&nbsp;m²</span><span class="lbl">Wohnfläche</span></div>
