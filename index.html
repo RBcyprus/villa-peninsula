@@ -497,6 +497,27 @@
     background:none; border:none; color:#fff; font-size:32px; line-height:1;
     cursor:pointer;
   }
+  .lightbox-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,.12); border:none; color:#fff;
+    width:52px; height:52px; border-radius:50%;
+    font-size:26px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .15s ease;
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,.24);}
+  .lightbox-prev{left:14px;}
+  .lightbox-next{right:14px;}
+  @media (max-width:600px){
+    .lightbox-nav{width:44px; height:44px; font-size:22px;}
+    .lightbox-prev{left:6px;}
+    .lightbox-next{right:6px;}
+  }
+  .lightbox-nav[hidden]{display:none;}
+  .lightbox-count{
+    position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+    color:#fff; font-family:"IBM Plex Mono", monospace; font-size:13px; opacity:.75;
+  }
 
   h2.section-title{font-size:clamp(26px,3.4vw,36px);}
 
@@ -624,7 +645,9 @@
       </ul>
     </div>
     <div>
-      <img src="images/willkommen.jpg" alt="Außenansicht der Villa mit Terrasse und Zufahrt" width="1000" height="562" loading="lazy" decoding="async">
+      <button type="button" class="img-btn" id="willkommenImgBtn" style="all:unset; cursor:pointer; display:block; width:100%;" aria-label="Bildergalerie öffnen">
+        <img src="images/willkommen.jpg" alt="Außenansicht der Villa mit Terrasse und Zufahrt" width="1000" height="562" loading="lazy" decoding="async" style="border-radius:var(--radius); display:block; width:100%; height:auto;">
+      </button>
     </div>
   </div>
 </section>
@@ -911,7 +934,10 @@
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" aria-label="Schließen" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Vorheriges Bild">&#8249;</button>
   <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Nächstes Bild">&#8250;</button>
+  <span class="lightbox-count" id="lightboxCount"></span>
 </div>
 
 <script>
@@ -926,6 +952,51 @@
   }
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lightboxImg');
+  var lbPrev = document.getElementById('lightboxPrev');
+  var lbNext = document.getElementById('lightboxNext');
+  var lbCount = document.getElementById('lightboxCount');
+  var currentGallery = [];
+  var currentIndex = 0;
+
+  // Alle Haus-Fotos in einer gemeinsamen, durchklickbaren Reihenfolge:
+  // Titelbild + Willkommen-Foto zuerst, danach der Rundgang unten auf der Seite.
+  var fullGallery = [
+    { src: 'images/hero.jpg', alt: 'Villa Peninsula II, Außenansicht' },
+    { src: 'images/willkommen.jpg', alt: 'Außenansicht der Villa mit Terrasse und Zufahrt' }
+  ];
+  document.querySelectorAll('.gallery-grid button').forEach(function(b){
+    fullGallery.push({ src: b.getAttribute('data-full'), alt: b.querySelector('img').alt });
+  });
+
+  function showImage(i){
+    currentIndex = (i + currentGallery.length) % currentGallery.length;
+    var item = currentGallery[currentIndex];
+    lbImg.src = item.src;
+    lbImg.alt = item.alt;
+    var showNav = currentGallery.length > 1;
+    lbPrev.hidden = !showNav;
+    lbNext.hidden = !showNav;
+    lbCount.textContent = showNav ? (currentIndex + 1) + ' / ' + currentGallery.length : '';
+  }
+  function openLightbox(gallery, startIndex){
+    currentGallery = gallery;
+    showImage(startIndex);
+    lb.classList.add('open');
+  }
+  lbPrev.addEventListener('click', function(e){ e.stopPropagation(); showImage(currentIndex - 1); });
+  lbNext.addEventListener('click', function(e){ e.stopPropagation(); showImage(currentIndex + 1); });
+
+  // Titelbild (Hero): Klick öffnet die Galerie, außer auf Buttons/Links darin (WhatsApp-CTA, Scroll-Pfeil)
+  document.querySelector('.hero').addEventListener('click', function(e){
+    if (e.target.closest('a, button')) return;
+    openLightbox(fullGallery, 0);
+  });
+  document.querySelector('.hero').style.cursor = 'pointer';
+
+  // Willkommen-Foto
+  var willkommenBtn = document.getElementById('willkommenImgBtn');
+  if (willkommenBtn) willkommenBtn.addEventListener('click', function(){ openLightbox(fullGallery, 1); });
+
   (function(){
     var v = document.getElementById('innen-video');
     if (!v) return;
@@ -939,15 +1010,23 @@
     v.appendChild(src);
   })();
 
-  document.querySelectorAll('.gallery-grid button, .map-card').forEach(function(b){
+  document.querySelectorAll('.gallery-grid button').forEach(function(b, i){
+    b.addEventListener('click', function(){ openLightbox(fullGallery, i + 2); });
+  });
+  // Karten-/Strandbilder bleiben eine eigene, nicht durchklickbare Einzelansicht
+  document.querySelectorAll('.map-card').forEach(function(b){
     b.addEventListener('click', function(){
-      lbImg.src = b.getAttribute('data-full');
-      lb.classList.add('open');
+      openLightbox([{ src: b.getAttribute('data-full'), alt: b.querySelector('img').alt }], 0);
     });
   });
   function closeLightbox(){ lb.classList.remove('open'); lbImg.src=''; }
   lb.addEventListener('click', function(e){ if(e.target === lb) closeLightbox(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft' && currentGallery.length > 1) showImage(currentIndex - 1);
+    if(e.key === 'ArrowRight' && currentGallery.length > 1) showImage(currentIndex + 1);
+  });
 
   // Formular-Absendung als Conversion melden, bevor zu Formspree weitergeleitet wird
   (function(){
